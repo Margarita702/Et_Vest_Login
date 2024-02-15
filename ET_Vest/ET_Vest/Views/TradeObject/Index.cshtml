@@ -6,12 +6,11 @@
         <tr>
             <th>Name</th>
             <th>Address</th>
-            <th>City</th>
             <th>Employee</th>
-        @*     @if (User.IsInRole("Admin"))
+            @if (User.IsInRole("Owner"))
             {
                 <th>Actions</th>
-            } *@
+            }
         </tr>
     </thead>
     <tbody>
@@ -21,11 +20,11 @@
                 <td>@tradeObjects.Name</td>
                 <td>@tradeObjects.Address</td>
                 <td>@tradeObjects.Employee</td>
-            @*     <td>
-                    @string.Join(", ", tradeObjects.Requests.Select(m => m.Id).ToList())
-                </td> *@
-              @*   @if (User.IsInRole("Admin"))
-                { *@
+                @*     <td>
+            @string.Join(", ", tradeObjects.Requests.Select(m => m.Id).ToList())
+            </td> *@
+                @if (User.IsInRole("Owner"))
+                {
                     <td>
                         <a asp-action="Edit" asp-route-id="@tradeObjects.Id"
                            class="btn btn-primary">Edit</a>
@@ -34,12 +33,12 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
-               @*  } *@
+                }
             </tr>
         }
     </tbody>
 </table>
-@* @if (User.IsInRole("Admin"))
-{ *@
+@if (User.IsInRole("Owner"))
+{
     <a asp-action="Add" asp-controller="TradeObject" class="btn btn-success">Add New TradeObject</a>
-@* } *@
+}

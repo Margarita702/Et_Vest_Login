@@ -1,5 +1,6 @@
 ﻿using ET_Vest.Data;
 using ET_Vest.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,8 +25,7 @@ namespace ET_Vest.Controllers
         }
 
         ////Add TradeObject
-        //[Authorize(Roles = "Admin")]
-
+        [Authorize(Roles = "Owner")]
         public IActionResult Add()
         {
             ViewBag.Requests = context.Requests.ToList();
@@ -42,7 +42,7 @@ namespace ET_Vest.Controllers
         }
 
         ////Update TradeObject
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Owner")]
         public IActionResult Edit(int id)
         {
             var tradeObject = context.TradeObjects
@@ -61,18 +61,18 @@ namespace ET_Vest.Controllers
         [HttpPost]
         public IActionResult Edit(TradeObject tradeObject)
         {
-          //  if (ModelState.IsValid)
-           // {
+            //  if (ModelState.IsValid)
+            // {
 
-                context.TradeObjects.Update(tradeObject);
-                context.SaveChanges();
-                return RedirectToAction("Index");
-         //   }
-         //   return View(tradeObject);
+            context.TradeObjects.Update(tradeObject);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+            //   }
+            //   return View(tradeObject);
         }
 
         [HttpPost]
-       // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Owner")]
         public IActionResult Delete(int id)
         {
             var tradeObject = context.TradeObjects.Find(id);
