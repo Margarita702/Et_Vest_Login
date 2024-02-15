@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cinema.Data
+namespace ET_Vest.Data
 {
     public class UserViewModel
     {
@@ -8,7 +8,7 @@ namespace Cinema.Data
         public string UserName { get; set; }
 
         [Required]
-        [EmailAddress]
+        [EmailAddress] 
         public string Email { get; set; }
 
         [Required]

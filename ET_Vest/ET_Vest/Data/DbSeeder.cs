@@ -1,8 +1,8 @@
-﻿using Cinema.Models;
+﻿
 using ET_Vest.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace Cinema.Data
+namespace ET_Vest.Data
 {
     public class DbSeeder
     {
@@ -11,9 +11,9 @@ namespace Cinema.Data
             //Seed Roles
             var userManager = service.GetService<UserManager<ApplicationUser>>();
             var roleManager = service.GetService<RoleManager<IdentityRole>>();
-            await roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Roles.Owner.ToString()));
-            await roleManager.CreateAsync(new IdentityRole(Roles.Provider.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.Emoloyee.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
 
             // creating admin
 
@@ -30,7 +30,7 @@ namespace Cinema.Data
             if (userInDb == null)
             {
                 await userManager.CreateAsync(user, "Owner@123");
-                await userManager.AddToRoleAsync(user, Roles.Admin.ToString());
+                await userManager.AddToRoleAsync(user, Roles.Owner.ToString());
             }
         }
     }

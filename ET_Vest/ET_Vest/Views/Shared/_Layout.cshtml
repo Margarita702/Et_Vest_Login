@@ -32,16 +32,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Provider" asp-action="Index">Providers</a>
                         </li>
-                        @*   @if (User.IsInRole("Admin")) *@
-                        @*  { *@
-                        @*     <li class="nav-item">
+                          @if (User.IsInRole("Admin"))
+                         {
+                         @*    <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="PrintedEditionProvider" asp-action="Index">PrintedEdition-Provider</a>
-                        </li>
+                        </li> *@
                         <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Identity"
                         asp-page="/Account/Register">Register</a>
-                        </li> *@
-                        @*   } *@
+                        </li>
+                          }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Request" asp-action="Index">Requests</a>
                         </li>

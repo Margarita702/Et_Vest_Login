@@ -19,7 +19,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using Cinema.Data;
+using ET_Vest.Data;
+
 
 namespace ET_Vest.Areas.Identity.Pages.Account
 {
@@ -117,7 +118,7 @@ namespace ET_Vest.Areas.Identity.Pages.Account
             public string PhoneNumber { get; set; }
 
 
-            [RegularExpression("^(Provider|Admin)$", ErrorMessage ="The role should be 'Provider' or 'Admin' only.")]
+            [RegularExpression("^(Employee|Admin)$", ErrorMessage ="The role should be 'Employee' or 'Admin' only.")]
             public string? Role { get; set; }
         }
 
@@ -146,9 +147,9 @@ namespace ET_Vest.Areas.Identity.Pages.Account
                     {
                         await _userManager.AddToRoleAsync(user, Roles.Admin.ToString());
                     }
-                    else if(Input.Role=="Provider")
+                    else if(Input.Role=="Employee")
                     {
-                        await _userManager.AddToRoleAsync(user, Roles.Provider.ToString());
+                        await _userManager.AddToRoleAsync(user, Roles.Emoloyee.ToString());
                     }
 
                     _logger.LogInformation("User created a new account with password.");
