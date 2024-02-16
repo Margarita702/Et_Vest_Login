@@ -23,6 +23,7 @@ namespace ET_Vest.Data
                 Email = "owner@gmail.com",
                 FirstName = "Margarita",
                 LastName="Staykova",
+                Name="Margarita",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true
             };
