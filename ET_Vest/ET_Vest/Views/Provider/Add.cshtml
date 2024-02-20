@@ -1,6 +1,6 @@
 ﻿@model ET_Vest.Models.Provider
 
-<h2>Add Provider</h2>
+<h2>Добавяне на доставчик</h2>
 <form asp-action="Add">
     <div class="form-control">
         <label asp-for="Name" class="form-label"></label>
@@ -24,5 +24,5 @@
                 asp-items="@(new SelectList(ViewBag.PrintedEditions,"Title"))"
                 class="form-control"></select>
     </div> *@
-    <button type="submit" class="btn btn-primary" asp-controller="Provider">Add</button>
+    <button type="submit" class="btn btn-primary" asp-controller="Provider">Добавяне</button>
 </form>

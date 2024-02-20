@@ -1,7 +1,7 @@
 ﻿@using ET_Vest.Models.Enums
  @model ET_Vest.Data.ViewModels.PrintedEditionProviderViewModel
 
-<h2>Edit PrintedEdition</h2>
+<h2>Редактиране на печатно издание</h2>
 <form method="post" asp-action="Edit" asp-controller="PrintedEdition">
 
     <div class="form-control">
@@ -13,14 +13,14 @@
         <label asp-for="@Model.PrintedEdition.Cathegory" class="form-label"></label>
        @*  <input asp-for="@Model.PrintedEdition.Cathegory" class="form-control" /> *@
         <select asp-for="@Model.PrintedEdition.Cathegory" asp-items="Html.GetEnumSelectList<Cathegory>()" class="form-control">
-            <option value="">Select a Category</option>
+            <option value="">Изберете категория</option>
         </select>
     </div>
     <div class="form-control">
         <label asp-for="@Model.PrintedEdition.Periodicity" class="form-label"></label>
         @* <input asp-for="@Model.PrintedEdition.Periodicity" class="form-control" /> *@
         <select asp-for="@Model.PrintedEdition.Periodicity" asp-items="Html.GetEnumSelectList<Periodicity>()" class="form-control">
-            <option value="">Select a Periodicity</option>
+            <option value="">Изберете периодичност</option>
         </select>
     </div>
 
@@ -40,6 +40,7 @@
                 asp-items="@ViewBag.Providers"
                 class="form-control"></select>
     </div> *@
+
     <div class="form-group">
         <input asp-for="@Model.PrintedEdition.PrintedEditionId" class="d-done" value="@Model.PrintedEdition.PrintedEditionId" />
         <input type="submit" value="Update" class="btn btn-primary" asp-sction="Edit" />
