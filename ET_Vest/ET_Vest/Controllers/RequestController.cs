@@ -26,7 +26,7 @@ namespace ET_Vest.Controllers
 
             return View(requests);
         }
-        [Authorize(Roles = "Owner")]
+        [Authorize(Roles = "Owner, Employee")]
 
         public IActionResult Add()
         {
@@ -69,7 +69,7 @@ namespace ET_Vest.Controllers
         [HttpPost]
         public IActionResult Edit(Request request)
         {
-
+            request.Status = "Изчакваща";
             context.Requests.Update(request);
             context.SaveChanges();
             return RedirectToAction("Index");
@@ -90,7 +90,6 @@ namespace ET_Vest.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-        [Authorize(Roles = "Employee")]
         [HttpPost]
         public IActionResult SentToOwner(int id)
         {
@@ -107,7 +106,6 @@ namespace ET_Vest.Controllers
 
             return RedirectToAction("Index");
         }
-        [Authorize(Roles = "Owner")]
         [HttpPost]
         public IActionResult SentToProvider(int id)
         {
@@ -125,7 +123,6 @@ namespace ET_Vest.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "Employee")]
         [HttpPost]
         public IActionResult DoneRequest(int id)
         {

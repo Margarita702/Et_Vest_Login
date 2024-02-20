@@ -7,7 +7,7 @@
             <th>Name</th>
             <th>Address</th>
             <th>Employee</th>
-            @if (User.IsInRole("Owner"))
+            @if (!User.IsInRole("Employee"))
             {
                 <th>Actions</th>
             }
@@ -23,7 +23,7 @@
                 @*     <td>
             @string.Join(", ", tradeObjects.Requests.Select(m => m.Id).ToList())
             </td> *@
-                @if (User.IsInRole("Owner"))
+                @if (!User.IsInRole("Employee"))
                 {
                     <td>
                         <a asp-action="Edit" asp-route-id="@tradeObjects.Id"
@@ -38,7 +38,7 @@
         }
     </tbody>
 </table>
-@if (User.IsInRole("Owner"))
+@if (!User.IsInRole("Employee"))
 {
     <a asp-action="Add" asp-controller="TradeObject" class="btn btn-success">Add New TradeObject</a>
 }

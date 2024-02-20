@@ -29,7 +29,7 @@ namespace ET_Vest.Controllers
         }
 
         //Add Provider
-        [Authorize(Roles = "Owner")]
+        [Authorize(Roles = "Owner, Admin")]
 
         public IActionResult Add()
         {
@@ -48,7 +48,7 @@ namespace ET_Vest.Controllers
         }
 
         //Update Provider
-        [Authorize(Roles = "Owner")]
+        [Authorize(Roles = "Owner, Admin")]
 
         public IActionResult Edit(int id)
         {
@@ -84,7 +84,7 @@ namespace ET_Vest.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Owner")]
+        [Authorize(Roles = "Owner, Admin")]
         public IActionResult Delete(int id)
         {
             var provider = context.Providers.Find(id);

@@ -113,9 +113,6 @@ namespace ET_Vest.Migrations
                     b.Property<int>("Periodicity")
                         .HasColumnType("int");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
                     b.Property<double>("SalePrice")
                         .HasColumnType("float");
 

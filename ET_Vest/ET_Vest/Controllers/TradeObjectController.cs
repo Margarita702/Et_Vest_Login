@@ -25,7 +25,7 @@ namespace ET_Vest.Controllers
         }
 
         ////Add TradeObject
-        [Authorize(Roles = "Owner")]
+        [Authorize(Roles = "Owner, Admin")]
         public IActionResult Add()
         {
             ViewBag.Requests = context.Requests.ToList();
@@ -42,7 +42,7 @@ namespace ET_Vest.Controllers
         }
 
         ////Update TradeObject
-        [Authorize(Roles = "Owner")]
+        [Authorize(Roles = "Owner, Admin")]
         public IActionResult Edit(int id)
         {
             var tradeObject = context.TradeObjects
@@ -72,7 +72,7 @@ namespace ET_Vest.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Owner")]
+        [Authorize(Roles = "Owner, Admin")]
         public IActionResult Delete(int id)
         {
             var tradeObject = context.TradeObjects.Find(id);

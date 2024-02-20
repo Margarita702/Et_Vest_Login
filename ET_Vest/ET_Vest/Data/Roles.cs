@@ -3,7 +3,7 @@
     public enum Roles
     {
         Owner,
-        Emoloyee,
+        Employee,
         Admin
     }
 }

@@ -12,7 +12,7 @@ namespace ET_Vest.Data
             var userManager = service.GetService<UserManager<ApplicationUser>>();
             var roleManager = service.GetService<RoleManager<IdentityRole>>();
             await roleManager.CreateAsync(new IdentityRole(Roles.Owner.ToString()));
-            await roleManager.CreateAsync(new IdentityRole(Roles.Emoloyee.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.Employee.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
 
             // creating admin

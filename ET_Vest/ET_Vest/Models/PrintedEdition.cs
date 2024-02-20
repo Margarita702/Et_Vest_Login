@@ -12,7 +12,6 @@ namespace ET_Vest.Models
         public Cathegory Cathegory { get; set; }
         [EnumDataType(typeof(Periodicity))]
         public Periodicity Periodicity { get; set; }
-        public int Quantity { get; set; }
         public double DeliveredUnitPrice { get; set; }
         public double SalePrice { get; set; }
         public List<PrintedEditionProvider> PrintEditionProviders { get; set; }

@@ -155,7 +155,7 @@ namespace ET_Vest.Areas.Identity.Pages.Account
                     }
                     else if(Input.Role=="Employee")
                     {
-                        await _userManager.AddToRoleAsync(user, Roles.Emoloyee.ToString());
+                        await _userManager.AddToRoleAsync(user, Roles.Employee.ToString());
                     }
 
                     _logger.LogInformation("User created a new account with password.");
