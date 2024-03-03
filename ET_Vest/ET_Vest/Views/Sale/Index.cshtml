@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ET_Vest.Models.Sale>
+
+<h2>Продажби</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Дата на продажбата</th>
+            <th>Печатно издание</th>
+            <th>Търговски обект</th>
+            <th>Количество</th>
+            <th>Цена на брой</th>
+            <th>Обща цена</th>
+            @*     @if (!User.IsInRole("Admin"))
+            {
+            <th>Actions</th>
+            } *@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sale in Model)
+        {
+            <tr>
+                <td>@sale.DateOfSale.ToString("dd/MM/yyyy")</td>
+                <td>@sale.PrintedEdition.Title</td>
+                <td>@sale.TradeObject.Name</td>
+                <td>@sale.SoldQuantity</td>
+                <td>@sale.PrintedEdition.SalePrice</td>
+                <td>@sale.Sum</td>
+
+
+                <td>
+                   @*  @if (User.IsInRole("Owner"))
+                    { *@
+                            <a asp-action="Edit" asp-route-id="@sale.SalesId"
+                               class="btn btn-primary">Редактиране</a>
+                            <form asp-action="Delete" asp-route-id="@sale.SalesId" method="post"
+                                  onsubmit="return confirm('Сигурни ли сте, че искате да изтриете тази продажба?');">
+                                <button type="submit" class="btn btn-danger">Изтриване</button>
+                            </form>
+                    @* } *@
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+    <a asp-action="Add" asp-controller="Sale" class="btn btn-success">Добавяне на нова продажба</a>

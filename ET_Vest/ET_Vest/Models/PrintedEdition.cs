@@ -1,4 +1,5 @@
 ﻿using ET_Vest.Models.Enums;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ET_Vest.Models
@@ -7,15 +8,23 @@ namespace ET_Vest.Models
     {
         [Key]
         public int PrintedEditionId { get; set; }
+
         public string Title { get; set; }
+
         [EnumDataType(typeof(Cathegory))]
         public Cathegory Cathegory { get; set; }
+
         [EnumDataType(typeof(Periodicity))]
         public Periodicity Periodicity { get; set; }
+
         public double DeliveredUnitPrice { get; set; }
+
         public double SalePrice { get; set; }
+
         public List<PrintedEditionProvider> PrintEditionProviders { get; set; }
+
         public List<Request> Requests { get; set; }
 
+        public List<Sale> Sale { get; set; }
     }
 }

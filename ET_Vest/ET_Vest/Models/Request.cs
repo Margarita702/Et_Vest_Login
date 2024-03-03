@@ -1,4 +1,5 @@
-﻿using ET_Vest.Models.Enums;
+﻿using System;
+using ET_Vest.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace ET_Vest.Models
@@ -7,8 +8,12 @@ namespace ET_Vest.Models
     {
         [Key]
         public int Id { get; set; }
+
         public DateTime RequestDate { get; set; }
+
+
         public int RequestedQuantity { get; set; }
+
         public string Status { get; set; }
 
         [EnumDataType(typeof(Cathegory))]
@@ -21,7 +26,6 @@ namespace ET_Vest.Models
         public PrintedEdition PrintedEdition { get; set; }
 
         public int ProviderId { get; set; }
-        public Provider Provider { get; set; }  
-
+        public Provider Provider { get; set; }
     }
 }

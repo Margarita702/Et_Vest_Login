@@ -13,9 +13,11 @@ namespace ET_Vest.Data
         }
         public DbSet<PrintedEdition> PrintedEditions { get; set; }
         public DbSet<Request> Requests { get; set; }
-        public DbSet<TradeObject > TradeObjects { get; set; }
+        public DbSet<TradeObject> TradeObjects { get; set; }
         public DbSet<Provider> Providers { get; set; }
         public DbSet<PrintedEditionProvider> PrintedEditionProviders { get; set; }
+        public DbSet<Sale> Sales { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -33,7 +35,9 @@ namespace ET_Vest.Data
                 .HasOne(ma => ma.Provider)
                 .WithMany(a => a.PrintEditionProviders)
                 .HasForeignKey(ma => ma.ProviderId);
-        }
+          
 
         }
+
+    }
 }

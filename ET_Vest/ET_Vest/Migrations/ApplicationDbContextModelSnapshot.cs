@@ -210,6 +210,38 @@ namespace ET_Vest.Migrations
                     b.ToTable("Requests");
                 });
 
+            modelBuilder.Entity("ET_Vest.Models.Sale", b =>
+                {
+                    b.Property<int>("SalesId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SalesId"));
+
+                    b.Property<DateTime>("DateOfSale")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PrintedEditionId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("SalePrice")
+                        .HasColumnType("float");
+
+                    b.Property<double>("SoldQuantity")
+                        .HasColumnType("float");
+
+                    b.Property<int>("TradeObjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SalesId");
+
+                    b.HasIndex("PrintedEditionId");
+
+                    b.HasIndex("TradeObjectId");
+
+                    b.ToTable("Sales");
+                });
+
             modelBuilder.Entity("ET_Vest.Models.TradeObject", b =>
                 {
                     b.Property<int>("Id")
@@ -414,6 +446,25 @@ namespace ET_Vest.Migrations
                     b.Navigation("TradeObject");
                 });
 
+            modelBuilder.Entity("ET_Vest.Models.Sale", b =>
+                {
+                    b.HasOne("ET_Vest.Models.PrintedEdition", "PrintedEdition")
+                        .WithMany("Sale")
+                        .HasForeignKey("PrintedEditionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ET_Vest.Models.TradeObject", "TradeObject")
+                        .WithMany("Sales")
+                        .HasForeignKey("TradeObjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PrintedEdition");
+
+                    b.Navigation("TradeObject");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -470,6 +521,8 @@ namespace ET_Vest.Migrations
                     b.Navigation("PrintEditionProviders");
 
                     b.Navigation("Requests");
+
+                    b.Navigation("Sale");
                 });
 
             modelBuilder.Entity("ET_Vest.Models.Provider", b =>
@@ -480,6 +533,8 @@ namespace ET_Vest.Migrations
             modelBuilder.Entity("ET_Vest.Models.TradeObject", b =>
                 {
                     b.Navigation("Requests");
+
+                    b.Navigation("Sales");
                 });
 #pragma warning restore 612, 618
         }

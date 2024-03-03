@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ET_Vest.Models
 {
@@ -6,12 +7,15 @@ namespace ET_Vest.Models
     {
         [Key]
         public int ProviderId { get; set; }
+
         public string Name { get; set; }
+
         public string PhoneNumber { get; set; }
+
         public string Email { get; set; }
+
         public string City { get; set; }
 
         public List<PrintedEditionProvider> PrintEditionProviders { get; set; }
     }
-
 }

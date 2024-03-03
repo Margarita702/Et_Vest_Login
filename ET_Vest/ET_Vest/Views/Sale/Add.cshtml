@@ -1,0 +1,35 @@
+﻿@using ET_Vest.Models.Enums
+@model ET_Vest.Models.Sale
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Продажби</h2>
+<form method="post" asp-action="Add" asp-controller="Sale">
+    <div class="form-control">
+        <label asp-for="DateOfSale" class="form-label"></label>
+        <input asp-for="DateOfSale" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PrintedEditionId"></label>
+        <select asp-for="PrintedEditionId" asp-items="@(new SelectList(ViewBag.PrintedEditions, "PrintedEditionId", "Title"))" class="form-control">
+            <option value="">Изберете печатно издание</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="TradeObjectId"></label>
+        <select asp-for="TradeObjectId" asp-items="@(new SelectList(ViewBag.TradeObjects, "Id", "Name"))" class="form-control">
+            <option value="">Изберете търговски обект</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="SoldQuantity"></label>
+        <input asp-for="SoldQuantity" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Добавяне на продажба</button>
+</form>
+
+
+
+
